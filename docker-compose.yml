@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  ml-service:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./models:/app/models
+    command: sh -c "python main.py && python server.py"
+    restart: unless-stopped
